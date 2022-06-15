@@ -1,0 +1,611 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css'  %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- search form  -->
+
+<div class="search-form">
+
+    <div id="close-search" class="fas fa-times"></div>
+
+    <form action="">
+        <input type="search" name="" placeholder="search here..." id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+    </form>
+</div>
+
+<!-- home section starts  -->
+
+
+<section class="home" id="home">
+
+    <div class="swiper home-slider">
+        
+        <div class="swiper-wrapper">
+            {% for i in HomeBG_list %}
+            <div class="swiper-slide">
+                <div class="box" style="background-image: url('{{ i.img.url }}'); background-repeat: no-repeat;">
+                    <div class="content">
+                        <span>{{ i.name1 }}</span>
+                        <h3>{{ i.name2 }}</h3>
+                        <p>{{ i.description }}</p>
+                        <a href="#" class="btn">get started</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- category section starts  -->
+<section class="book-form" id="book-form">
+
+    <form method="POST">
+        <div  class="inputBox">
+            <span>where to?</span>
+            <input type="text" placeholder="place name" value="name">
+        </div>
+        <div class="inputBox">
+            <span>when?</span>
+            <input type="date" value="date">
+        </div>
+        <div class="inputBox">
+            <span>how many?</span>
+            <input type="number" placeholder="number of travelers" value="nums">
+        </div>
+        <input type="submit" value="find now" class="btn">
+    </form>
+
+</section>
+<section class="category">
+
+    <h1 class="heading">Արկածային տուրիզմի գաղափարներ</h1>
+
+    <div class="box-container">
+
+        {% for tour in tours %}
+        <div class="box">
+            <img src="{{ tour.img.url }}" alt="">
+            <h3>{{ tour.name }}</h3>
+            <p>{{ tour.about }}</p>
+            <a href="{% url 'home_detail' tour.id %}" class="btn">կարդալ ավելին</a>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+<!-- category section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <div class="image">
+        <img src="images/compas.jpg" alt="">
+    </div>
+
+    <div class="content">
+        <h3>Մեզ հետ ճանապարհորդելը շատ հետաքրքիր է</h3>
+        <p>Այս կայքի միջոցով ամրագրելը ավելի արագ է և մատչելի։
+            Ընտրեք վայրը,որտեղ ցանկանում եք գնալ ,ամրագրեք հյուրանոցը և թռիչքը, իսկ մենք կապահովենք կատարյալ
+            հանգիստը</p>
+        
+        <a href="aboutus.html" class="btn">Կարդալ ավելին</a>
+    </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- shop section starts  -->
+<section class="shop" id="shop">
+
+    <h1 class="heading">Առաջարկվող տուրիստական ապրանքներ</h1>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/product-1.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>ՈՒսապարկ</h3>
+                    <div class="price"> 60 000AMD </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/product-2.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Դանակ</h3>
+                    <div class="price"> 15 000 AMD </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/product-3.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Ակնոց</h3>
+                    <div class="price"> 10 000 AMD </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/product-4.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3> Ալպինիստական կոշիկ</h3>
+                    <div class="price"> 20 000 AMD </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/termo.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>ԹԵՐՄՈՀԱԳՈՒՍՏ CLOE</h3>
+                    <div class="price"> 35 000 AMD </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <div class="image">
+                    <img src="images/vran.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="#" class="fas fa-eye"></a>
+                        <a href="#" class="fas fa-share"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>ՎՐԱՆ FOX COMFORT 2 V2</h3>
+                    <div class="price"> 120 000 AMD </div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+
+    </div>
+
+</section>
+
+<!-- shop section ends -->
+
+<!-- packages section starts  -->
+
+
+<section class="blogs" id="blogs">
+
+    <h1 class="heading"> Թերթիր և ամրագրիր  </h1>
+
+    <div class="swiper blogs-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <img src="images/hotel.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> Book now</a>
+                   
+                </div>
+                <h3>Hotels</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+            <div class="swiper-slide slide">
+                <img src="images/cottage.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> Book Now </a>
+          
+                </div>
+                <h3>Cottages</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+            <div class="swiper-slide slide">
+                <img src="images/Vacation.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> Book Now</a>
+                    
+                </div>
+                <h3>Vacation Homes</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+            <div class="swiper-slide slide">
+                <img src="images/hostel.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> Book Now </a>
+                   
+                </div>
+                <h3>Hostels</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+            <div class="swiper-slide slide">
+                <img src="images/Cabins.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> Book Now </a>
+              
+                </div>
+                <h3>Cabins</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+            <div class="swiper-slide slide">
+                <img src="images/villas.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> Book Now </a>
+                  
+                </div>
+                <h3>Villas</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- packages section ends -->
+
+<!-- reviews section starts  -->
+
+<section class="reviews" id="reviews">
+
+    <h1 class="heading">Կարծիքներ</h1>
+
+    <div class="swiper review-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quidem laborum pariatur alias, culpa illum quaerat, aliquid laboriosam voluptatem nisi repellat obcaecati, adipisci esse ab delectus dolorum ut recusandae ipsam?</p>
+                <div class="user">
+                    <img src="images/pic-1.png" alt="">
+                    <div class="info">
+                        <h3>john deo</h3>
+                        <span>designer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quidem laborum pariatur alias, culpa illum quaerat, aliquid laboriosam voluptatem nisi repellat obcaecati, adipisci esse ab delectus dolorum ut recusandae ipsam?</p>
+                <div class="user">
+                    <img src="images/pic-2.png" alt="">
+                    <div class="info">
+                        <h3>Ann</h3>
+                        <span>designer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quidem laborum pariatur alias, culpa illum quaerat, aliquid laboriosam voluptatem nisi repellat obcaecati, adipisci esse ab delectus dolorum ut recusandae ipsam?</p>
+                <div class="user">
+                    <img src="images/pic-3.png" alt="">
+                    <div class="info">
+                        <h3>jack</h3>
+                        <span>designer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quidem laborum pariatur alias, culpa illum quaerat, aliquid laboriosam voluptatem nisi repellat obcaecati, adipisci esse ab delectus dolorum ut recusandae ipsam?</p>
+                <div class="user">
+                    <img src="images/pic-4.png" alt="">
+                    <div class="info">
+                        <h3>john deo</h3>
+                        <span>designer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quidem laborum pariatur alias, culpa illum quaerat, aliquid laboriosam voluptatem nisi repellat obcaecati, adipisci esse ab delectus dolorum ut recusandae ipsam?</p>
+                <div class="user">
+                    <img src="images/pic-5.png" alt="">
+                    <div class="info">
+                        <h3>john deo</h3>
+                        <span>designer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-slide slide">
+                <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quidem laborum pariatur alias, culpa illum quaerat, aliquid laboriosam voluptatem nisi repellat obcaecati, adipisci esse ab delectus dolorum ut recusandae ipsam?</p>
+                <div class="user">
+                    <img src="images/pic-6.png" alt="">
+                    <div class="info">
+                        <h3>john deo</h3>
+                        <span>designer</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- reviews section ends -->
+
+<!-- services section starts  -->
+
+<section class="services" id="services">
+
+    <div class="heading">
+
+        <h3>Մեր ծառայությունները</h3>
+    </div>
+
+    <div class="box-container">
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="150">
+            <i class="fas fa-globe"></i>
+            <h3>worldwide</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="300">
+            <i class="fas fa-hiking"></i>
+            <h3>adventures</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="450">
+            <i class="fas fa-utensils"></i>
+            <h3>food & drinks</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="600">
+            <i class="fas fa-hotel"></i>
+            <h3>affordable hotels</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="750">
+            <i class="fas fa-wallet"></i>
+            <h3>affordable price</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+        <div class="box" data-aos="zoom-in-up" data-aos-delay="900">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 support</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam, cumque.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- services section ends -->
+
+<!-- next trip  -->
+
+<section class="blogs" id="blogs">
+
+    <h1 class="heading"> Ընտրեք հաջորդ ճանապարհորդության վայրը </h1>
+
+    <div class="swiper blogs-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide slide">
+                <img src="images/abudhabi.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> book now </a>
+                   
+                </div>
+                <h3>Աբու Դաբի</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+            <div class="swiper-slide slide">
+                <img src="images/armenia.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> book now </a>
+                  
+                </div>
+                <h3>Հայաստան</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+            <div class="swiper-slide slide">
+                <img src="images/italia.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> book now </a>
+                    
+                </div>
+                <h3>Իտալիա</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+            <div class="swiper-slide slide">
+                <img src="images/Maldives.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> book now </a>
+                    
+                </div>
+                <h3>Մալդիվներ</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+            <div class="swiper-slide slide">
+                <img src="images/egipt.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> book now</a>
+                    
+                </div>
+                <h3>Եգիպտոս</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+            <div class="swiper-slide slide">
+                <img src="images/russia.jpg" alt="">
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-calendar"></i> book now </a>
+                    
+                </div>
+                <h3>Ռուսաստան</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, deserunt.</p>
+                <a href="#" class="btn">read more</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- blogs section ends -->
+
+<!-- newsletter section  -->
+<section id="contact" class="contact">
+
+    <h1 class="heading"> <span> c</span>ontact <span>u</span>s</h1>
+    
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12192.59126886825!2d44.507659936256665!3d40.183523720284704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406abcfaeabab397%3A0x820d1439a31fd75!2sArmenia%20Travel!5e0!3m2!1sru!2s!4v1646044393963!5m2!1sru!2s" 
+width="100%" height="350" style="border:0;" outline:none; allowfullscreen="" loading="lazy"
+
+></iframe>
+
+</section>
+
+<!-- <div class="row">
+    <div class="contact-info">
+        <div class="box">
+            
+        </div>
+    </div>
+</div> -->
+
+<section class="newsletter">
+
+    <div class="content">
+        <h1 class="heading">subscirbe now</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam ipsam repellat nostrum esse officiis unde quisquam corporis doloremque adipisci similique!</p>
+        <form action="">
+            <input type="email" name="" placeholder="enter your email" id="" class="email">
+            <input type="submit" value="subscirbe" class="btn">
+        </form>
+    </div>
+
+</section>
+
+{% endblock %} 
+
+{% block js %}
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
